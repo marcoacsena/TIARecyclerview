@@ -1,0 +1,2 @@
+rootProject.name='TIA Recyclerview'
+include ':app'
