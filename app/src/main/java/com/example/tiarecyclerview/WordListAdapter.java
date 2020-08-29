@@ -48,20 +48,22 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public final TextView word;
+        private ImageView ivFavoritado;
 
         final WordListAdapter wordListAdapter;
 
     public WordViewHolder(@NonNull View itemView, WordListAdapter wordListAdapter) {
             super(itemView);
             word = itemView.findViewById(R.id.word);
+            ivFavoritado = itemView.findViewById(R.id.ivFavoritado);
 
 
-//            ivFavoritado.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Toast.makeText(context, "Favorito clicado!!!", Toast.LENGTH_SHORT).show();
-//                }
-//            });
+            ivFavoritado.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Favorito clicado!!!", Toast.LENGTH_SHORT).show();
+                }
+            });
 
             this.wordListAdapter = wordListAdapter;
             itemView.setOnClickListener(this);
