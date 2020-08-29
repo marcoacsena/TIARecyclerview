@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rvWord;
     WordListAdapter wordListAdapter;
-    private final ArrayList<String> wordList = new ArrayList<>();
+    private final ArrayList<Word> wordList = new ArrayList<>();
 
 
     @Override
@@ -33,9 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        for(int i = 0; i < 20; i++){
-            wordList.add("Word " +i);
-        }
+        criarWordList();
 
         rvWord = findViewById(R.id.recyclerView);
         wordListAdapter = new WordListAdapter(wordList, this);
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         rvWord.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayout.VERTICAL));
         rvWord.setAdapter(wordListAdapter);
 
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,16 +50,29 @@ public class MainActivity extends AppCompatActivity {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
 
-                int wordListSize = wordList.size();
-                // Add a new word to the wordList.
-                wordList.add("Word " + wordListSize);
-                // Notify the adapter, that the data has changed.
-                rvWord.getAdapter().notifyItemInserted(wordListSize);
-                // Scroll to the bottom.
-                rvWord.smoothScrollToPosition(wordListSize);
+//                int wordListSize = wordList.size();
+////                // Add a new word to the wordList.
+////                wordList.add("Word " + wordListSize);
+////                // Notify the adapter, that the data has changed.
+////                rvWord.getAdapter().notifyItemInserted(wordListSize);
+////                // Scroll to the bottom.
+////                rvWord.smoothScrollToPosition(wordListSize);
+
+
 
             }
         });
+    }
+
+    private void criarWordList() {
+        Word word = new Word();
+        word.setNome("Marco");
+        wordList.add(word);
+
+        Word word1 = new Word();
+        word1.setNome("Lu");
+        wordList.add(word1);
+
     }
 
     @Override
